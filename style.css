@@ -12,7 +12,7 @@
             position: fixed;
             inset: 0;
             z-index: -1;
-            background-image: url('../img/homebg.jpg');
+            background-image: url('./img/homebg.jpg');
             background-size: cover;
             background-position: center;
             pointer-events: none;
