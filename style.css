@@ -145,10 +145,10 @@
                 order: 3;
             }
             .nav-buttons .btn:nth-child(3) {
-                order: 4;
+                order: 2;
             }
             .nav-buttons .btn:nth-child(4) {
-                order: 2;
+                order: 4;
             }
         }
 
@@ -210,10 +210,10 @@
                 order: 3;
             }
             .nav-buttons .btn:nth-child(3) {
-                order: 4;
+                order: 2;
             }
             .nav-buttons .btn:nth-child(4) {
-                order: 2;
+                order: 4;
             }
         }
 
