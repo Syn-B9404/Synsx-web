@@ -12,30 +12,29 @@ function kirimWA(e) {
   e.preventDefault(); // ⛔ Prevent reload
 
   var nama = document.getElementById("full-name").value;
-  var email = document.getElementById("email").value;
+  var address = document.getElementById("address").value;
   var phone = document.getElementById("phone").value;
   var paket = document.getElementById("subject").value;
   var pesanTambahan = document.getElementById("message").value;
 
-  var pesan = `Halo Admin SYNSX 👋
+  var pesan = `Halo Admin SYNSX
 Saya ingin daftar layanan internet:
 
-📌 Nama: ${nama}
-📞 No HP: ${phone}
-📧 Email: ${email}
-📦 Paket: ${paket}
+Nama: ${nama}
+Alamat: ${address}
+No HP: ${phone}
+Paket: ${paket}
 
-📝 Pesan:
+Pesan:
 ${pesanTambahan}`;
 
-if (!nama || !phone || !paket) {
-  alert("Isi data wajib* dulu ya bro 🙏");
-  return;
+  if (!nama || !phone || !paket) {
+    alert("Isi data wajib* dulu ya bro 🙏");
+    return;
+  }
 
   var noWa = "+6285220677372";
-
   var url = "https://wa.me/" + noWa + "?text=" + encodeURIComponent(pesan);
-
   window.location.href = url; // lebih aman dari popup block
 }
 </script>
