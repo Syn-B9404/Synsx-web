@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - SYNSX</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-left">
+    <h1>FAQ SYNSX</h1>
+    <p>Pertanyaan yang sering ditanyakan</p>
+  </div>
+   <nav class="nav-buttons">
+            <div class="dropdown">
+                <button class="btn" onclick="window.location='#product'"><i class="fas fa-box"></i> Produk dan Layanan</button>
+                <div class="dropdown-content">
+                    <a href="#paket">Paket Internet</a>
+                    <a href="#layanan">Paket Usaha (voucher)</a>
+                    <a href="#promo">Promo</a>
+                </div>
+            </div>
+            <button class="btn" onclick="window.location='#maintenance'"><i class="fas fa-tools"></i>Info Maintenance</button>
+            <button class="btn" onclick="location.href='index.html'"><i class="fas fa-home"></i>Home</button>
+            <button class="btn btn-alert" onclick="window.location='#report'"><i class="fas fa-exclamation-triangle"></i> Lapor Gangguan</button>
+        </nav>
+</header>
+
+<main>
+
+  <!-- FAQ CONTENT -->
+  <section class="content form-card">
+    <h2>Pertanyaan Umum</h2>
+    <p>Berikut beberapa pertanyaan yang sering ditanyakan oleh pelanggan kami.</p>
+
+    <div class="faq-item">
+      <button class="faq-question">Apakah internet SYNSX unlimited?</button>
+      <div class="faq-answer">
+        <p>Ya, semua paket SYNSX 100% unlimited tanpa FUP.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Berapa lama proses pemasangan?</button>
+      <div class="faq-answer">
+        <p>Pemasangan biasanya memakan waktu 1–3 hari setelah konfirmasi.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Apakah bisa untuk gaming?</button>
+      <div class="faq-answer">
+        <p>Bisa banget. Kami menyediakan paket khusus gaming dengan latency rendah.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Kalau banyak pohon apakah tetap bisa?</button>
+      <div class="faq-answer">
+        <p>Bisa, tapi akan kami survey dulu untuk memastikan kualitas sinyal tetap optimal.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Pembayaran bagaimana?</button>
+      <div class="faq-answer">
+        <p>Pembayaran bisa via transfer bank atau e-wallet sesuai info dari admin.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SIDEBAR -->
+  <aside class="aboutus">
+    <h2>Kenapa pilih SYNSX?</h2>
+    <ul>
+      <li>Unlimited tanpa FUP</li>
+      <li>Stabil untuk gaming & streaming</li>
+      <li>Pemasangan cepat</li>
+      <li>Support fast response</li>
+    </ul>
+  </aside>
+
+</main>
+
+<footer class="footer">
+  <p>© 2026 SYNSX Network</p>
+</footer>
+
+<!-- SCRIPT FAQ -->
+<script>
+const faqButtons = document.querySelectorAll(".faq-question");
+
+faqButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const answer = btn.nextElementSibling;
+
+    // toggle
+    if (answer.style.maxHeight) {
+      answer.style.maxHeight = null;
+    } else {
+      answer.style.maxHeight = answer.scrollHeight + "px";
+    }
+  });
+});
+</script>
+
+</body>
+</html>
