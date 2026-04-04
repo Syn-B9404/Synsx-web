@@ -6,6 +6,32 @@
     <title>Formulir Registrasi</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+  
+<script>
+function kirimWA() {
+  var nama = document.getElementById("full-name").value;
+  var address = document.getElementById("address").value;
+  var phone = document.getElementById("phone").value;
+  var paket = document.getElementById("subject").value;
+  var pesanTambahan = document.getElementById("message").value;
+
+  var pesan = `Halo Admin SYNSX 👋
+Saya ingin daftar layanan internet:
+
+📌 Nama: ${nama}
+📞 No HP: ${phone}
+📧 Email: ${email}
+📦 Paket: ${paket}
+
+📝 Pesan:
+${pesanTambahan}`;
+
+  var noWa = "+6285220677372"; // ganti nomor kamu
+
+  var url = "https://wa.me/" + noWa + "?text=" + encodeURIComponent(pesan);
+window.location.href = url;
+}
+</script>
   <body>
     <header class="header">
       <div class="header-left">
@@ -65,33 +91,6 @@
     <button type="reset" class="btn btn-alert">Reset</button>
   </div>
 </form>
-
-<script>
-function kirimWA() {
-  var nama = document.getElementById("full-name").value;
-  var email = document.getElementById("email").value;
-  var phone = document.getElementById("phone").value;
-  var paket = document.getElementById("subject").value;
-  var pesanTambahan = document.getElementById("message").value;
-
-  var pesan = `Halo Admin SYNSX 👋
-Saya ingin daftar layanan internet:
-
-📌 Nama: ${nama}
-📞 No HP: ${phone}
-📧 Email: ${email}
-📦 Paket: ${paket}
-
-📝 Pesan:
-${pesanTambahan}`;
-
-  var noWa = "+6285220677372";
-
-  var url = "https://wa.me/" + noWa + "?text=" + encodeURIComponent(pesan);
-
-  window.open(url, "_blank");
-}
-</script>
       </section>
 
       <aside class="aboutus">
