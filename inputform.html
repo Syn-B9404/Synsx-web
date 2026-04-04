@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulir Registrasi</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-left">
+        <h1>Registrasi Layanan SYNSX</h1>
+        <p>Paket yang cocok untuk kebutuhan anda</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="content form-card">
+        <h2>Formulir Registrasi</h2>
+        <p>Silahkan isi formulir di bawah ini dan pilih paket yang cocok untuk anda.</p>
+
+        <form action="#" method="post" class="input-form">
+          <div class="form-grid">
+            <div class="form-field">
+              <label style=color:black for="full-name">Nama Lengkap *</label>
+              <input id="full-name" name="fullName" type="text" placeholder="Nama Lengkap" required />
+            </div>
+
+            <div class="form-field">
+              <label style=color:black for="email">Alamat Email</label>
+              <input id="email" name="email" type="email" placeholder="asep21@gmail.com" />
+            </div>
+
+            <div class="form-field">
+              <label style=color:black for="phone">Nomor Telepon *</label>
+              <input id="phone" name="phone" type="tel" placeholder="08xxxxxxxxxx" required />
+            </div>
+
+            <div class="form-field">
+              <label style=color:black for="subject">Paket Layanan *</label>
+              <select id="subject" name="subject" required>
+                <option value="">Pilih paket</option>
+                <option value="entry">Syn-Entry</option>
+                <option value="gamer">Syn-Gamer</option>
+                <option value="sns">Syn-SNS</option>
+                <option value="enterprise">Syn-Enterprise</option>
+              </select>
+            </div>
+
+            <div class="form-field form-span-full">
+              <label style=color:black for="message">Pesan opsional</label>
+              <textarea id="message" name="message" rows="5" placeholder="Tulis pesan opsional Anda di sini..." required></textarea>
+            </div>
+
+            <div class="form-field form-span-full">
+              <div class="form-checkbox">
+                <input id="agreement" name="agreement" type="checkbox" required />
+                <label for="agreement">Saya telah membaca dan setuju dengan syarat dan ketentuan yang berlaku</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="cta-btn">Submit</button>
+            <button type="reset" class="btn btn-alert">Reset</button>
+          </div>
+        </form>
+      </section>
+
+      <aside class="aboutus">
+        <h2>Teknologi SYNSX</h2>
+        <ul>
+          <li>Pilihlah teknologi jaringan <em>Fiber Optic</em> untuk koneksi yang stabil dan cepat.</li>
+          <li>Gunakan teknologi jaringan <em>over-the-air</em> untuk pemasangan yg praktis dan hemat</li>
+          <li>Layanan kami 1000% unlimited tanpa batas FUP.</li>
+          <li>Nikmati layanan terbaik paket Syn-Enterprise dengan backup link untuk koneksi internet premium SLA 99.99%.</li>
+        </ul>
+      </aside>
+    </main>
+  </body>
+</html>
