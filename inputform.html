@@ -8,9 +8,11 @@
   </head>
   
 <script>
-function kirimWA() {
+function kirimWA(e) {
+  e.preventDefault(); // ⛔ Prevent reload
+
   var nama = document.getElementById("full-name").value;
-  var address = document.getElementById("address").value;
+  var email = document.getElementById("email").value;
   var phone = document.getElementById("phone").value;
   var paket = document.getElementById("subject").value;
   var pesanTambahan = document.getElementById("message").value;
@@ -26,10 +28,15 @@ Saya ingin daftar layanan internet:
 📝 Pesan:
 ${pesanTambahan}`;
 
-  var noWa = "+6285220677372"; // ganti nomor kamu
+if (!nama || !phone || !paket) {
+  alert("Isi data wajib* dulu ya bro 🙏");
+  return;
+
+  var noWa = "+6285220677372";
 
   var url = "https://wa.me/" + noWa + "?text=" + encodeURIComponent(pesan);
-window.location.href = url;
+
+  window.location.href = url; // lebih aman dari popup block
 }
 </script>
   <body>
@@ -45,7 +52,7 @@ window.location.href = url;
         <h2>Formulir Registrasi</h2>
         <p>Silahkan isi formulir di bawah ini dan pilih paket yang cocok untuk anda.</p>
 
-        <form onsubmit="kirimWA(); return false;" class="input-form">
+        <form onsubmit="kirimWA(event)" class="input-form">
   <div class="form-grid">
     <div class="form-field">
       <label style="color:black" for="full-name">Nama Lengkap *</label>
