@@ -19,52 +19,79 @@
         <h2>Formulir Registrasi</h2>
         <p>Silahkan isi formulir di bawah ini dan pilih paket yang cocok untuk anda.</p>
 
-        <form action="#" method="post" class="input-form">
-          <div class="form-grid">
-            <div class="form-field">
-              <label style=color:black for="full-name">Nama Lengkap *</label>
-              <input id="full-name" name="fullName" type="text" placeholder="Nama Lengkap" required />
-            </div>
+        <form onsubmit="kirimWA(); return false;" class="input-form">
+  <div class="form-grid">
+    <div class="form-field">
+      <label style="color:black" for="full-name">Nama Lengkap *</label>
+      <input id="full-name" name="fullName" type="text" placeholder="Nama Lengkap" required />
+    </div>
 
-            <div class="form-field">
-              <label style=color:black for="email">Alamat Email</label>
-              <input id="email" name="email" type="email" placeholder="asep21@gmail.com" />
-            </div>
+    <div class="form-field">
+      <label style="color:black" for="address">Alamat Rumah*</label>
+      <input id="address" name="address" type="text" placeholder="Jl. Warung asem Rt/20 Rw/07 purwadadi, Subang." required />
+    </div>
 
-            <div class="form-field">
-              <label style=color:black for="phone">Nomor Telepon *</label>
-              <input id="phone" name="phone" type="tel" placeholder="08xxxxxxxxxx" required />
-            </div>
+    <div class="form-field">
+      <label style="color:black" for="phone">Nomor Telepon *</label>
+      <input id="phone" name="phone" type="tel" placeholder="08xxxxxxxxxx" required />
+    </div>
 
-            <div class="form-field">
-              <label style=color:black for="subject">Paket Layanan *</label>
-              <select id="subject" name="subject" required>
-                <option value="">Pilih paket</option>
-                <option value="entry">Syn-Entry</option>
-                <option value="gamer">Syn-Gamer</option>
-                <option value="sns">Syn-SNS</option>
-                <option value="enterprise">Syn-Enterprise</option>
-              </select>
-            </div>
+    <div class="form-field">
+      <label style="color:black" for="subject">Paket Layanan *</label>
+      <select id="subject" name="subject" required>
+        <option value="">Pilih paket</option>
+        <option value="Syn-Entry">Syn-Entry</option>
+        <option value="Syn-Gamer">Syn-Gamer</option>
+        <option value="Syn-SNS">Syn-SNS</option>
+        <option value="Syn-Enterprise">Syn-Enterprise</option>
+      </select>
+    </div>
 
-            <div class="form-field form-span-full">
-              <label style=color:black for="message">Pesan opsional</label>
-              <textarea id="message" name="message" rows="5" placeholder="Tulis pesan opsional Anda di sini..." required></textarea>
-            </div>
+    <div class="form-field form-span-full">
+      <label style="color:black" for="message">Pesan opsional</label>
+      <textarea id="message" name="message" rows="5" placeholder="Tulis pesan opsional Anda di sini..."></textarea>
+    </div>
 
-            <div class="form-field form-span-full">
-              <div class="form-checkbox">
-                <input id="agreement" name="agreement" type="checkbox" required />
-                <label for="agreement">Saya telah membaca dan setuju dengan syarat dan ketentuan yang berlaku</label>
-              </div>
-            </div>
-          </div>
+    <div class="form-field form-span-full">
+      <div class="form-checkbox">
+        <input id="agreement" name="agreement" type="checkbox" required />
+        <label for="agreement">Saya telah membaca dan setuju dengan syarat dan ketentuan yang berlaku</label>
+      </div>
+    </div>
+  </div>
 
-          <div class="form-actions">
-            <button type="submit" class="cta-btn">Submit</button>
-            <button type="reset" class="btn btn-alert">Reset</button>
-          </div>
-        </form>
+  <div class="form-actions">
+    <button type="submit" class="cta-btn">Submit</button>
+    <button type="reset" class="btn btn-alert">Reset</button>
+  </div>
+</form>
+
+<script>
+function kirimWA() {
+  var nama = document.getElementById("full-name").value;
+  var email = document.getElementById("email").value;
+  var phone = document.getElementById("phone").value;
+  var paket = document.getElementById("subject").value;
+  var pesanTambahan = document.getElementById("message").value;
+
+  var pesan = `Halo Admin SYNSX 👋
+Saya ingin daftar layanan internet:
+
+📌 Nama: ${nama}
+📞 No HP: ${phone}
+📧 Email: ${email}
+📦 Paket: ${paket}
+
+📝 Pesan:
+${pesanTambahan}`;
+
+  var noWa = "+6285220677372"; // ganti nomor kamu
+
+  var url = "https://wa.me/" + noWa + "?text=" + encodeURIComponent(pesan);
+
+  window.open(url, "_blank");
+}
+</script>
       </section>
 
       <aside class="aboutus">
