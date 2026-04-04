@@ -412,3 +412,39 @@
                 position: static;
             }
         }
+
+/* Google Translate Widget Styling */
+#google_translate_element .goog-te-gadget-simple {
+    background: linear-gradient(135deg, #d05bb1, #eec6d2) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 999px !important;
+    padding: 0.65rem 1.1rem !important;
+    font-size: 0.95rem !important;
+    cursor: pointer !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease !important;
+    display: inline-block !important;
+    text-decoration: none !important;
+    position: relative !important;
+}
+
+#google_translate_element .goog-te-gadget-simple::before {
+    content: "🌐";
+    margin-right: 0.5rem;
+    font-size: 1em;
+}
+
+#google_translate_element .goog-te-gadget-simple:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 8px 18px rgba(59,130,246,0.25) !important;
+    opacity: 0.95 !important;
+}
+
+#google_translate_element .goog-te-menu-frame {
+    border-radius: 8px !important;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3) !important;
+}
+
+#google_translate_element img {
+    display: none !important;
+}
