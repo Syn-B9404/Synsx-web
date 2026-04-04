@@ -6,10 +6,74 @@
     <title>Formulir Registrasi</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  
 <script>
+let currentLang = "id"; // default Indonesia
+
+function setLang(lang) {
+  currentLang = lang;
+  if (lang === 'ja') {
+    document.querySelectorAll('.lang-id').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('.lang-ja').forEach(el => el.style.display = 'inline');
+    // Update form labels
+    document.querySelector('label[for="full-name"]').textContent = 'お名前 *';
+    document.querySelector('label[for="address"]').textContent = '住所 *';
+    document.querySelector('label[for="phone"]').textContent = '電話番号 *';
+    document.querySelector('label[for="subject"]').textContent = 'サービスパッケージ *';
+    document.querySelector('label[for="message"]').textContent = 'オプションのメッセージ';
+    document.querySelector('label[for="agreement"]').textContent = '利用規約に同意します';
+    document.querySelector('.cta-btn').textContent = '送信';
+    document.querySelector('.btn-alert').textContent = 'リセット';
+    // Update select options
+    const select = document.getElementById('subject');
+    select.options[0].text = 'パッケージを選択';
+    select.options[1].text = 'Syn-Entry';
+    select.options[2].text = 'Syn-Gamer';
+    select.options[3].text = 'Syn-SNS';
+    select.options[4].text = 'Syn-Enterprise';
+    // Update h2 and p
+    document.querySelector('h2').textContent = '登録フォーム';
+    document.querySelector('main p').textContent = '以下のフォームに記入し、あなたに合ったパッケージを選択してください。';
+    // Update aside
+    document.querySelector('.aboutus h2').textContent = 'SYNSXテクノロジー';
+    const ul = document.querySelector('.aboutus ul');
+    ul.innerHTML = `
+      <li>安定した高速接続のために<em>光ファイバー</em>ネットワーク技術を選択してください。</li>
+      <li>実用的で経済的な設置のために<em>over-the-air</em>ネットワーク技術を使用します。</li>
+      <li>当社のサービスは1000%無制限でFUP制限なし。</li>
+      <li>Syn-Enterpriseパッケージの最高のサービスをお楽しみください。バックアップリンク付きでインターネット接続プレミアムSLA 99.99%。</li>
+    `;
+  } else {
+    document.querySelectorAll('.lang-id').forEach(el => el.style.display = 'inline');
+    document.querySelectorAll('.lang-ja').forEach(el => el.style.display = 'none');
+    // Reset to Indonesian
+    document.querySelector('label[for="full-name"]').textContent = 'Nama Lengkap *';
+    document.querySelector('label[for="address"]').textContent = 'Alamat Rumah *';
+    document.querySelector('label[for="phone"]').textContent = 'Nomor Telepon *';
+    document.querySelector('label[for="subject"]').textContent = 'Paket Layanan *';
+    document.querySelector('label[for="message"]').textContent = 'Pesan opsional';
+    document.querySelector('label[for="agreement"]').textContent = 'Saya telah membaca dan setuju dengan syarat dan ketentuan yang berlaku';
+    document.querySelector('.cta-btn').textContent = 'Submit';
+    document.querySelector('.btn-alert').textContent = 'Reset';
+    const select = document.getElementById('subject');
+    select.options[0].text = 'Pilih paket';
+    select.options[1].text = 'Syn-Entry';
+    select.options[2].text = 'Syn-Gamer';
+    select.options[3].text = 'Syn-SNS';
+    select.options[4].text = 'Syn-Enterprise';
+    document.querySelector('h2').textContent = 'Formulir Registrasi';
+    document.querySelector('main p').textContent = 'Silahkan isi formulir di bawah ini dan pilih paket yang cocok untuk anda.';
+    const ul = document.querySelector('.aboutus ul');
+    ul.innerHTML = `
+      <li>Pilihlah teknologi jaringan <em>Fiber Optic</em> untuk koneksi yang stabil dan cepat.</li>
+      <li>Gunakan teknologi jaringan <em>over-the-air</em> untuk pemasangan yg praktis dan hemat</li>
+      <li>Layanan kami 1000% unlimited tanpa batas FUP.</li>
+      <li>Nikmati layanan terbaik paket Syn-Enterprise dengan backup link untuk koneksi internet premium SLA 99.99%.</li>
+    `;
+  }
+}
+
 function kirimWA(e) {
-  e.preventDefault(); // ⛔ Prevent reload
+  e.preventDefault();
 
   var nama = document.getElementById("full-name").value;
   var address = document.getElementById("address").value;
@@ -17,7 +81,16 @@ function kirimWA(e) {
   var paket = document.getElementById("subject").value;
   var pesanTambahan = document.getElementById("message").value;
 
-  var pesan = `Halo Admin SYNSX
+  if (!nama || !phone || !paket) {
+    alert(currentLang === "ja" ? "必須項目を入力してください 🙏" : "Isi data wajib dulu ya 🙏");
+    return;
+  }
+
+  // =========================
+  // 🇮🇩 INDONESIA → WHATSAPP
+  // =========================
+  if (currentLang === "id") {
+    var pesan = `Halo Admin SYNSX
 Saya ingin daftar layanan internet:
 
 Nama: ${nama}
@@ -28,37 +101,48 @@ Paket: ${paket}
 Pesan:
 ${pesanTambahan}`;
 
-  if (!nama || !phone || !paket) {
-    alert("Isi data wajib* dulu ya bro 🙏");
-    return;
+    var noWa = "6285220677372";
+    var url = "https://wa.me/" + noWa + "?text=" + encodeURIComponent(pesan);
+
+    window.location.href = url;
   }
 
-  var noWa = "+6285220677372";
-  var url = "https://wa.me/" + noWa + "?text=" + encodeURIComponent(pesan);
-  window.location.href = url; // lebih aman dari popup block
+  // =========================
+  // 🇯🇵 JEPANG → LINE
+  // =========================
+  else if (currentLang === "ja") {
+    var pesanJP = `SYNSXインターネットサービス申込み
+
+お名前: ${nama}
+住所: ${address}
+電話番号: ${phone}
+プラン: ${paket}
+
+ご要望:
+${pesanTambahan}`;
+
+    // ⚠️ LINE ga bisa auto isi chat → kita bantu copy
+    navigator.clipboard.writeText(pesanJP);
+
+    alert("メッセージをコピーしました！LINEで貼り付けて送信してください 👍");
+
+    // ganti dengan link LINE kamu
+    var lineURL = "https://line.me/R/ti/p/syn9404";
+
+    window.location.href = lineURL;
+  }
 }
 </script>
   <body>
     <header class="header">
       <div class="header-left">
-        <h1>Registrasi Layanan SYNSX</h1>
-        <p>Paket yang cocok untuk kebutuhan anda</p>
+        <h1><span class="lang-id">Registrasi Layanan SYNSX</span><span class="lang-ja" style="display:none">SYNSXサービス登録</span></h1>
+        <p><span class="lang-id">Paket yang cocok untuk kebutuhan anda</span><span class="lang-ja" style="display:none">あなたに合ったパッケージ</span></p>
+        <div style="position:absolute; top:10px; right:10px;">
+  <button onclick="setLang('id')">🇮🇩 ID</button>
+  <button onclick="setLang('ja')">🇯🇵 日本語</button>
+</div>
       </div>
-      <div id="google_translate_element"></div>
-
-<script>
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'id',
-    includedLanguages: 'ja,en,id',
-    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-  }, 'google_translate_element');
-  
-}
-</script>
-
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
     </header>
 
     <main>

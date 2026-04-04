@@ -7,25 +7,84 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>SYNSX</title>
 </head>
+<script>
+let currentLang = "id"; // default Indonesia
+
+function setLang(lang) {
+  currentLang = lang;
+  if (lang === 'ja') {
+    document.querySelectorAll('.lang-id').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('.lang-ja').forEach(el => el.style.display = 'inline');
+    // Update nav buttons
+    document.querySelector('.dropdown .btn').innerHTML = '<i class="fas fa-box"></i> 製品とサービス';
+    document.querySelectorAll('.dropdown-content a')[0].textContent = 'インターネットパッケージ';
+    document.querySelectorAll('.dropdown-content a')[1].textContent = 'ビジネスパッケージ (バウチャー)';
+    document.querySelectorAll('.dropdown-content a')[2].textContent = 'プロモーション';
+    document.querySelectorAll('.btn')[1].innerHTML = '<i class="fas fa-tools"></i>メンテナンス情報';
+    document.querySelectorAll('.btn')[2].innerHTML = '<i class="fas fa-question-circle"></i> FAQ';
+    document.querySelector('.btn-alert').innerHTML = '<i class="fas fa-exclamation-triangle"></i> 障害報告';
+    // Update main content
+    document.querySelector('main h2').textContent = '#SynsxAja';
+    document.querySelector('main p').textContent = '接続を維持し、創造性を維持し、SYNSXを維持';
+    document.querySelectorAll('main p')[1].textContent = 'ゲーム中にラグが発生すると自動的に負け、視聴中にバッファが発生すると自動的にムードが崩壊。解決策？ #SynsxAja - 安定、高速、ドラマなし！';
+    document.querySelector('.cta-btn').textContent = '今すぐ登録！';
+    document.querySelectorAll('main p')[2].textContent = '月額200kから';
+    // Update aside
+    document.querySelector('.aboutus h2').textContent = '私たちについて';
+    document.querySelector('.aboutus p').textContent = 'SYNSXは、安定性、速度、手頃な価格に焦点を当てたインターネットサービスを提供します。フレンドリーでプロフェッショナルなアプローチで、私たちはすべての人々が無制限に接続できる最高の接続を提供するよう努めています。';
+    document.querySelectorAll('.aboutus h2')[1].textContent = '利点';
+    const ul = document.querySelector('.aboutus ul');
+    ul.innerHTML = `
+      <li>安定した接続</li>
+      <li>プロフェッショナル</li>
+      <li>手頃な価格</li>
+    `;
+    // Update footer
+    document.querySelector('.footer p').textContent = '© 2026 Synsx. All rights reserved.';
+    document.querySelector('.address p').textContent = 'お問い合わせ';
+    document.querySelectorAll('.address p')[1].textContent = 'Tel: +62 852-2067-7372';
+    document.querySelectorAll('.address p')[2].textContent = '住所: BTN Purwadadi Indah Blok H 44 Rt27/Rw05, Purwadadi, Subang, Jawa Barat';
+  } else {
+    document.querySelectorAll('.lang-id').forEach(el => el.style.display = 'inline');
+    document.querySelectorAll('.lang-ja').forEach(el => el.style.display = 'none');
+    // Reset to Indonesian
+    document.querySelector('.dropdown .btn').innerHTML = '<i class="fas fa-box"></i> Produk dan Layanan';
+    document.querySelectorAll('.dropdown-content a')[0].textContent = 'Paket Internet';
+    document.querySelectorAll('.dropdown-content a')[1].textContent = 'Paket Usaha (voucher)';
+    document.querySelectorAll('.dropdown-content a')[2].textContent = 'Promo';
+    document.querySelectorAll('.btn')[1].innerHTML = '<i class="fas fa-tools"></i>Info Maintenance';
+    document.querySelectorAll('.btn')[2].innerHTML = '<i class="fas fa-question-circle"></i> FAQ';
+    document.querySelector('.btn-alert').innerHTML = '<i class="fas fa-exclamation-triangle"></i> Lapor Gangguan';
+    document.querySelector('main h2').textContent = '#SynsxAja';
+    document.querySelector('main p').textContent = 'Stay connected, Stay creative, Stay SYNSX';
+    document.querySelectorAll('main p')[1].textContent = 'Ngelag pas game auto kalah, Buffer pas nonton auto mood hancur, Solusinya? #SynsxAja - stabil, ngebut, no drama!';
+    document.querySelector('.cta-btn').textContent = 'Daftar Sekarang!';
+    document.querySelectorAll('main p')[2].textContent = 'Harga mulai dari Rp200k/bulan';
+    document.querySelector('.aboutus h2').textContent = 'Tentang Kami';
+    document.querySelector('.aboutus p').textContent = 'SYNSX hadir menyediakan layanan internet yang berfokus pada kestabilan, kecepatan, dan harga yang terjangkau. Dengan pendekatan yang ramah dan profesional, kami berusaha menghadirkan koneksi terbaik agar semua orang dapat terhubung tanpa batas.';
+    document.querySelectorAll('.aboutus h2')[1].textContent = 'Keunggulan';
+    const ul = document.querySelector('.aboutus ul');
+    ul.innerHTML = `
+      <li>Koneksi Stabil</li>
+      <li>Profesional</li>
+      <li>Harga terjangkau</li>
+    `;
+    document.querySelector('.footer p').textContent = '© 2026 Synsx. All rights reserved.';
+    document.querySelector('.address p').textContent = 'Hubungi Kami';
+    document.querySelectorAll('.address p')[1].textContent = 'Tel: +62 852-2067-7372';
+    document.querySelectorAll('.address p')[2].textContent = 'Alamat: BTN Purwadadi Indah Blok H 44 Rt27/Rw05, Purwadadi, Subang, Jawa Barat';
+  }
+}
+</script>
 <body>
     <header class="header">
         <div class="header-left">
-            <h1>Selamat Datang di SYNSX</h1>
-            <p>Internet Terjangkau untuk semua</p>
-            <div id="google_translate_element"></div>
-
-<script>
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'id',
-    includedLanguages: 'ja,en,id',
-    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-  }, 'google_translate_element');
-  
-}
-</script>
-
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+            <h1><span class="lang-id">Selamat Datang di SYNSX</span><span class="lang-ja" style="display:none">SYNSXへようこそ</span></h1>
+            <p><span class="lang-id">Internet Terjangkau untuk semua</span><span class="lang-ja" style="display:none">すべての人に手頃なインターネット</span></p>
+            <div class="langbut">
+  <button onclick="setLang('id')">🇮🇩 ID</button>
+  <button onclick="setLang('ja')">🇯🇵 日本語</button>
+</div>
         </div>
         <nav class="nav-buttons">
             <div class="dropdown">
@@ -45,21 +104,21 @@ function googleTranslateElementInit() {
     <main>
         <section class="content">
             <h2>#SynsxAja</h2>
-            <p><em>Stay connected, Stay creative, Stay SYNSX</em></p>
-            <p>Ngelag pas game auto kalah, Buffer pas nonton auto mood hancur, Solusinya? #SynsxAja - stabil, ngebut, no drama!</p>
-            <button class="cta-btn" onclick="location.href='inputform.html'">Daftar Sekarang!</button>
-            <p style="font-style: italic;">Harga mulai dari Rp200k/bulan</p>
+            <p><em><span class="lang-id">Stay connected, Stay creative, Stay SYNSX</span><span class="lang-ja" style="display:none">接続を維持し、創造性を維持し、SYNSXを維持</span></em></p>
+            <p><span class="lang-id">Ngelag pas game auto kalah, Buffer pas nonton auto mood hancur, Solusinya? #SynsxAja - stabil, ngebut, no drama!</span><span class="lang-ja" style="display:none">ゲーム中にラグが発生すると自動的に負け、視聴中にバッファが発生すると自動的にムードが崩壊。解決策？ #SynsxAja - 安定、高速、ドラマなし！</span></p>
+            <button class="cta-btn" onclick="location.href='inputform.html'"><span class="lang-id">Daftar Sekarang!</span><span class="lang-ja" style="display:none">今すぐ登録！</span></button>
+            <p style="font-style: italic;"><span class="lang-id">Harga mulai dari Rp200k/bulan</span><span class="lang-ja" style="display:none">月額200kから</span></p>
         </section>
         <section class="aboutus">
-            <h2>Tentang Kami</h2>
+            <h2><span class="lang-id">Tentang Kami</span><span class="lang-ja" style="display:none">私たちについて</span></h2>
                 <p>
-                SYNSX hadir menyediakan layanan internet yang berfokus pada kestabilan, kecepatan, dan harga yang terjangkau. Dengan pendekatan yang ramah dan profesional, kami berusaha menghadirkan koneksi terbaik agar semua orang dapat terhubung tanpa batas.
+                <span class="lang-id">SYNSX hadir menyediakan layanan internet yang berfokus pada kestabilan, kecepatan, dan harga yang terjangkau. Dengan pendekatan yang ramah dan profesional, kami berusaha menghadirkan koneksi terbaik agar semua orang dapat terhubung tanpa batas.</span><span class="lang-ja" style="display:none">SYNSXは、安定性、速度、手頃な価格に焦点を当てたインターネットサービスを提供します。フレンドリーでプロフェッショナルなアプローチで、私たちはすべての人々が無制限に接続できる最高の接続を提供するよう努めています。</span>
                 </p> 
-            <h2>Keunggulan</h2>
+            <h2><span class="lang-id">Keunggulan</span><span class="lang-ja" style="display:none">利点</span></h2>
             <ul>
-                <li>Koneksi Stabil</li>
-                <li>Profesional</li>
-                <li>Harga terjangkau</li>
+                <li><span class="lang-id">Koneksi Stabil</span><span class="lang-ja" style="display:none">安定した接続</span></li>
+                <li><span class="lang-id">Profesional</span><span class="lang-ja" style="display:none">プロフェッショナル</span></li>
+                <li><span class="lang-id">Harga terjangkau</span><span class="lang-ja" style="display:none">手頃な価格</span></li>
             </ul>
         </section>
     </main>
@@ -67,9 +126,9 @@ function googleTranslateElementInit() {
     <footer class="footer">
         <p>&copy; 2026 Synsx. All rights reserved.</p>
         <section class="address">
-            <p>Hubungi Kami</p>
+            <p><span class="lang-id">Hubungi Kami</span><span class="lang-ja" style="display:none">お問い合わせ</span></p>
             <p>Tel: +62 852-2067-7372</p>
-            <p>Alamat: BTN Purwadadi Indah Blok H 44 Rt27/Rw05, Purwadadi, Subang, Jawa Barat</p>
+            <p><span class="lang-id">Alamat: BTN Purwadadi Indah Blok H 44 Rt27/Rw05, Purwadadi, Subang, Jawa Barat</span><span class="lang-ja" style="display:none">住所: BTN Purwadadi Indah Blok H 44 Rt27/Rw05, Purwadadi, Subang, Jawa Barat</span></p>
         </section>
     </footer>
 </body>

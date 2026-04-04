@@ -215,6 +215,11 @@
             .nav-buttons .btn:nth-child(4) {
                 order: 4;
             }
+            .langbut {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+            }
         }
 
         .header-left h1 {
