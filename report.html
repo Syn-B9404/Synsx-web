@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lapor Gangguan - SYNSX</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-left">
+    <h1>Lapor Gangguan</h1>
+    <p>Laporkan kendala internet Anda</p>
+  </div>
+
+  <div class="nav-buttons">
+    <a href="index.html" class="btn">🏠 Home</a>
+    <a href="faq.html" class="btn">❓ FAQ</a>
+    <a href="maintenance.html" class="btn">🛠️ Maintenance</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- FORM -->
+  <section class="content form-card">
+    <h2>Form Laporan</h2>
+    <p>Isi data berikut agar tim kami bisa membantu lebih cepat.</p>
+
+    <form onsubmit="kirimLaporan(event)" class="input-form">
+      <div class="form-grid">
+
+        <div class="form-field">
+          <label>Nama *</label>
+          <input id="nama" type="text" placeholder="Nama Anda" required>
+        </div>
+
+        <div class="form-field">
+          <label>No HP *</label>
+          <input id="phone" type="tel" placeholder="08xxxxxxxxxx" required>
+        </div>
+
+        <div class="form-field">
+          <label>Alamat *</label>
+          <input id="alamat" type="text" placeholder="Alamat lengkap" required>
+        </div>
+
+        <div class="form-field">
+          <label>Jenis Gangguan *</label>
+          <select id="jenis" required>
+            <option value="">Pilih</option>
+            <option>Lambat</option>
+            <option>Putus Total</option>
+            <option>Tidak Bisa Gaming</option>
+            <option>Router Bermasalah</option>
+          </select>
+        </div>
+
+        <div class="form-field form-span-full">
+          <label>Detail Gangguan</label>
+          <textarea id="pesan" placeholder="Jelaskan masalah yang Anda alami..."></textarea>
+        </div>
+
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="cta-btn">Kirim Laporan</button>
+        <button type="reset" class="btn btn-alert">Reset</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- SIDEBAR -->
+  <aside class="aboutus">
+    <h2>Tips Cepat</h2>
+    <ul>
+      <li>Restart router terlebih dahulu</li>
+      <li>Cek kabel dan adaptor</li>
+      <li>Tunggu 5–10 menit</li>
+      <li>Jika masih, baru lapor</li>
+    </ul>
+  </aside>
+
+</main>
+
+<footer class="footer">
+  <p>© 2026 SYNSX Network</p>
+</footer>
+
+<!-- SCRIPT -->
+<script>
+let currentLang = "id";
+
+// auto detect bahasa
+(function() {
+  let lang = navigator.language.toLowerCase();
+  if (lang.includes("ja")) currentLang = "ja";
+})();
+
+function kirimLaporan(e) {
+  e.preventDefault();
+
+  var nama = document.getElementById("nama").value;
+  var phone = document.getElementById("phone").value;
+  var alamat = document.getElementById("alamat").value;
+  var jenis = document.getElementById("jenis").value;
+  var pesan = document.getElementById("pesan").value;
+
+  if (!nama || !phone || !alamat || !jenis) {
+    alert(currentLang === "ja" ? "必須項目を入力してください" : "Isi semua data wajib ya");
+    return;
+  }
+
+  // 🇯🇵 MODE JEPANG → LINE
+  if (currentLang === "ja") {
+    var textJP = `回線トラブル報告
+
+お名前: ${nama}
+電話番号: ${phone}
+住所: ${alamat}
+問題: ${jenis}
+
+詳細:
+${pesan}`;
+
+    navigator.clipboard.writeText(textJP);
+    alert("コピーしました。LINEで貼り付けて送信してください");
+
+    window.location.href = "https://line.me/R/ti/p/@YOUR_LINE_ID";
+  }
+
+  // 🇮🇩 MODE INDONESIA → WHATSAPP
+  else {
+    var textID = `Laporan Gangguan SYNSX
+
+Nama: ${nama}
+No HP: ${phone}
+Alamat: ${alamat}
+Gangguan: ${jenis}
+
+Detail:
+${pesan}`;
+
+    var url = "https://wa.me/6285220677372?text=" + encodeURIComponent(textID);
+    window.location.href = url;
+  }
+}
+</script>
+
+</body>
+</html>
